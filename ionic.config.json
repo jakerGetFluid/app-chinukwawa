@@ -1,0 +1,7 @@
+{
+  "name": "chinukWawa",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
