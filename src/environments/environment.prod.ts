@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  endpointURL: 'https://chinuk-wawa.test/wp/?rest_route=/'
+  endpointURL: 'https://api.chinukwawa.test/wp-json/'
 };
