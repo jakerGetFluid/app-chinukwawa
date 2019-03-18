@@ -1,9 +1,12 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
+
 import 'rxjs/add/operator/map';
 import {of} from 'rxjs/observable/of';
+
 const ENDPOINT_URL = environment.endpointURL;
+
 @Injectable({
     providedIn: 'root'
 })
