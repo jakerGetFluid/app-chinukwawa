@@ -9,30 +9,43 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <ion-card class="welcome-card">
-      <ion-img src="/assets/shapes.svg"></ion-img>
+<ion-content padding>
+  <ion-list lines="none">
+    <!-- posts -->
+    <ion-list-header>
+      <ion-label>Posts</ion-label>
+    </ion-list-header>
+
+    <ion-card *ngFor="let item of items">
       <ion-card-header>
-        <ion-card-subtitle>Get Started</ion-card-subtitle>
-        <ion-card-title>Welcome to Ionic</ion-card-title>
+        <ion-card-subtitle>{{ item.date | date }}</ion-card-subtitle>
+        <ion-card-title [innerHTML]="item.title.rendered"></ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
-      </ion-card-content>
-    </ion-card>
-    <ion-list lines="none">
-      <ion-list-header>
-        <ion-label>Posts</ion-label>
-      </ion-list-header>
-      <ion-item *ngFor="let item of items">
-        <ion-icon [name]="item.icon" slot="start"></ion-icon>
-        <span [innerHTML]="">{{ item.title.rendered }}</span>
-        <div class="item-note" slot="end">
-          {{ item.id }}
-        </div>
-        <div class="item-note" slot="end">
+        <div [innerHTML]="item.excerpt.rendered"></div>
+        <div class="item-note">
           <a href="{{ item.link }}">Read More</a>
         </div>
-      </ion-item>
-    </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- pages -->
+    <ion-list-header>
+      <ion-label>Pages</ion-label>
+    </ion-list-header>
+
+    <ion-card *ngFor="let item of items">
+      <ion-card-header>
+        <ion-card-subtitle>{{ item.date | date }}</ion-card-subtitle>
+        <ion-card-title [innerHTML]="item.title.rendered"></ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div [innerHTML]="item.excerpt.rendered"></div>
+        <div class="item-note">
+          <a href="{{ item.link }}">Read More</a>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    
+  </ion-list>
 </ion-content>
