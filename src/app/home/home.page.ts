@@ -16,4 +16,10 @@ export class HomePage implements OnInit {
             console.log('ngOnInit() > items: %o', this.items);
         });
     }
+
+    text = 'Default starting text';
+
+    onChangeText() {
+      this.text = 'Changed!';
+    }
 }

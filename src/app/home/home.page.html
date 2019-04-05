@@ -23,9 +23,7 @@
       </ion-card-header>
       <ion-card-content>
         <div [innerHTML]="item.excerpt.rendered"></div>
-        <div class="item-note">
-          <a href="{{ item.link }}">Read More</a>
-        </div>
+        <ion-button color="light" (click)="onChangeText()">{{ text }}</ion-button>
       </ion-card-content>
     </ion-card>
 
