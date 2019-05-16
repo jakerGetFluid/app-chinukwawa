@@ -12,12 +12,13 @@ const ENDPOINT_URL = environment.endpointURL;
 })
 export class DataService {
     items: any[];
+    categories: any[];
     constructor(private http: HttpClient) {
     }
     /**
      * Gets a page of posts or all posts formerly fetched
      */
-    getPosts(): any {
+    getWords(): any {
         if (this.items) {
             // The of operator accepts a number of items as parameters, and returns an Observable that emits each of
             // these parameters, in order, as its emitted sequence. In this case, we will only be returning this.items
@@ -30,7 +31,7 @@ export class DataService {
             //
             // The Map operator applies a function of your choosing to each item emitted by the source Observable, and
             // returns an Observable that emits the results of these function applications.
-            return this.http.get(ENDPOINT_URL + 'wp/v2/posts?_embed').map(this.processPostData, this);
+            return this.http.get(ENDPOINT_URL + 'wp/v2/words').map(this.processPostData, this);
         }
     }
     // A place for post-processing, before making the fetched data available to view.
@@ -38,5 +39,20 @@ export class DataService {
         // Do post-processing code here (if useful)
         this.items = data;
         return this.items;
+    }
+
+    /**
+     * Gets all word categories
+     */
+    getWordCategories(): any {
+        if (this.categories) {
+            return of(this.categories);
+        } else {
+            return this.http.get(ENDPOINT_URL + 'wp/v2/word-categories').map(this.processCategoryData, this);
+        }
+    }
+    processCategoryData(data: any[]) {
+        this.categories = data;
+        return this.categories;
     }
 }
