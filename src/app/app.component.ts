@@ -16,6 +16,11 @@ export class AppComponent {
       icon: 'home'
     },
     {
+      title: 'Categories',
+      url: '/categories',
+      icon: 'ios-apps'
+    },
+    {
       title: 'List',
       url: '/list',
       icon: 'list'

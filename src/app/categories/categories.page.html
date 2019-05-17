@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Categories</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list lines="none">
+    <!-- word categories -->
+    <ion-list-header>
+      <ion-label>Word Categories</ion-label>
+    </ion-list-header>
+
+    <ion-card *ngFor="let category of categories">
+      <ion-card-header>
+        <ion-card-title [innerHTML]="category.name"></ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-button color="light" href="/{{ category.slug }}" routerDirection="root">See All</ion-button>
+      </ion-card-content>
+    </ion-card>
+
+  </ion-list>
+</ion-content>

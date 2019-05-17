@@ -55,4 +55,8 @@ export class DataService {
         this.categories = data;
         return this.categories;
     }
+
+    getCategoryBySlug(slug): any {
+        return this.categories.find(category => category.slug === slug);
+    }
 }
