@@ -1,59 +1,5 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["home-home-module"],{
 
-/***/ "./node_modules/rxjs-compat/_esm5/add/operator/map.js":
-/*!************************************************************!*\
-  !*** ./node_modules/rxjs-compat/_esm5/add/operator/map.js ***!
-  \************************************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _operator_map__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../operator/map */ "./node_modules/rxjs-compat/_esm5/operator/map.js");
-
-
-rxjs__WEBPACK_IMPORTED_MODULE_0__["Observable"].prototype.map = _operator_map__WEBPACK_IMPORTED_MODULE_1__["map"];
-//# sourceMappingURL=map.js.map
-
-/***/ }),
-
-/***/ "./node_modules/rxjs-compat/_esm5/observable/of.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/rxjs-compat/_esm5/observable/of.js ***!
-  \*********************************************************/
-/*! exports provided: of */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "of", function() { return rxjs__WEBPACK_IMPORTED_MODULE_0__["of"]; });
-
-
-//# sourceMappingURL=of.js.map
-
-/***/ }),
-
-/***/ "./node_modules/rxjs-compat/_esm5/operator/map.js":
-/*!********************************************************!*\
-  !*** ./node_modules/rxjs-compat/_esm5/operator/map.js ***!
-  \********************************************************/
-/*! exports provided: map */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "map", function() { return map; });
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-
-function map(project, thisArg) {
-    return Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_0__["map"])(project, thisArg)(this);
-}
-//# sourceMappingURL=map.js.map
-
-/***/ }),
-
 /***/ "./src/app/home/home.module.ts":
 /*!*************************************!*\
   !*** ./src/app/home/home.module.ts ***!
@@ -111,7 +57,7 @@ var HomePageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>\n      Home\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-list lines=\"none\">\n    <!-- posts -->\n    <ion-list-header>\n      <ion-label>Posts</ion-label>\n    </ion-list-header>\n\n    <ion-card *ngFor=\"let item of items\">\n      <ion-card-header>\n        <ion-card-subtitle>{{ item.date | date }}</ion-card-subtitle>\n        <ion-card-title [innerHTML]=\"item.title.rendered\"></ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        <div [innerHTML]=\"item.excerpt.rendered\"></div>\n        <div class=\"item-note\">\n          <a href=\"{{ item.link }}\">Read More</a>\n        </div>\n      </ion-card-content>\n    </ion-card>\n\n    <!-- pages -->\n    <ion-list-header>\n      <ion-label>Pages</ion-label>\n    </ion-list-header>\n\n    <ion-card *ngFor=\"let item of items\">\n      <ion-card-header>\n        <ion-card-subtitle>{{ item.date | date }}</ion-card-subtitle>\n        <ion-card-title [innerHTML]=\"item.title.rendered\"></ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        <div [innerHTML]=\"item.excerpt.rendered\"></div>\n        <div class=\"item-note\">\n          <a href=\"{{ item.link }}\">Read More</a>\n        </div>\n      </ion-card-content>\n    </ion-card>\n    \n  </ion-list>\n</ion-content>\n"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>Home</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-list lines=\"none\">\n    <!-- posts -->\n    <ion-list-header>\n      <ion-label>Words</ion-label>\n    </ion-list-header>\n\n    <ion-card *ngFor=\"let item of items\">\n      <ion-card-header>\n        <ion-card-title [innerHTML]=\"item.title.rendered\"></ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        <div>\n          <p>\n            <b>{{ item.acf.simple_translation }} &nbsp;-&nbsp;</b>\n            <i>{{ item.acf.word_type }}</i>\n          </p>\n        </div>\n        <div [innerHTML]=\"item.content.rendered\"></div>\n        <ion-button color=\"light\" (click)=\"onChangeText()\">{{ text }}</ion-button>\n      </ion-card-content>\n    </ion-card>\n    \n  </ion-list>\n</ion-content>\n"
 
 /***/ }),
 
@@ -145,14 +91,17 @@ __webpack_require__.r(__webpack_exports__);
 var HomePage = /** @class */ (function () {
     function HomePage(dataService) {
         this.dataService = dataService;
+        this.text = 'Default starting text';
     }
     HomePage.prototype.ngOnInit = function () {
         var _this = this;
-        console.log('> ngOnInit');
-        this.dataService.getPosts().subscribe(function (data) {
+        this.dataService.getWords().subscribe(function (data) {
             _this.items = data;
             console.log('ngOnInit() > items: %o', _this.items);
         });
+    };
+    HomePage.prototype.onChangeText = function () {
+        this.text = 'Changed!';
     };
     HomePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -163,72 +112,6 @@ var HomePage = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_shared_data_service__WEBPACK_IMPORTED_MODULE_2__["DataService"]])
     ], HomePage);
     return HomePage;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/shared/data.service.ts":
-/*!****************************************!*\
-  !*** ./src/app/shared/data.service.ts ***!
-  \****************************************/
-/*! exports provided: DataService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DataService", function() { return DataService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm5/add/operator/map.js");
-/* harmony import */ var rxjs_observable_of__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/observable/of */ "./node_modules/rxjs-compat/_esm5/observable/of.js");
-
-
-
-
-
-
-var ENDPOINT_URL = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].endpointURL;
-var DataService = /** @class */ (function () {
-    function DataService(http) {
-        this.http = http;
-    }
-    /**
-     * Gets a page of posts or all posts formerly fetched
-     */
-    DataService.prototype.getPosts = function () {
-        if (this.items) {
-            // The of operator accepts a number of items as parameters, and returns an Observable that emits each of
-            // these parameters, in order, as its emitted sequence. In this case, we will only be returning this.items
-            // to any subscriber.
-            return Object(rxjs_observable_of__WEBPACK_IMPORTED_MODULE_5__["of"])(this.items);
-        }
-        else {
-            // http.get() creates an observable.
-            // map() creates and returns its own new observable from the observable that http.get() created,
-            // which we can then subscribe to. Therefore, we can subscribe to the result of this method.
-            //
-            // The Map operator applies a function of your choosing to each item emitted by the source Observable, and
-            // returns an Observable that emits the results of these function applications.
-            return this.http.get(ENDPOINT_URL + 'wp/v2/posts?_embed').map(this.processPostData, this);
-        }
-    };
-    // A place for post-processing, before making the fetched data available to view.
-    DataService.prototype.processPostData = function (data) {
-        // Do post-processing code here (if useful)
-        this.items = data;
-        return this.items;
-    };
-    DataService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-            providedIn: 'root'
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
-    ], DataService);
-    return DataService;
 }());
 
 

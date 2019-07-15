@@ -837,8 +837,14 @@ module.exports = webpackAsyncContext;
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"./categories/categories.module": [
+		"./src/app/categories/categories.module.ts",
+		"common",
+		"categories-categories-module"
+	],
 	"./home/home.module": [
 		"./src/app/home/home.module.ts",
+		"common",
 		"home-home-module"
 	],
 	"./list/list.module": [
@@ -855,7 +861,7 @@ function webpackAsyncContext(req) {
 			throw e;
 		});
 	}
-	return __webpack_require__.e(ids[1]).then(function() {
+	return Promise.all(ids.slice(1).map(__webpack_require__.e)).then(function() {
 		var id = ids[0];
 		return __webpack_require__(id);
 	});
@@ -897,6 +903,10 @@ var routes = [
     {
         path: 'list',
         loadChildren: './list/list.module#ListPageModule'
+    },
+    {
+        path: 'categories',
+        loadChildren: './categories/categories.module#CategoriesPageModule'
     }
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -958,6 +968,11 @@ var AppComponent = /** @class */ (function () {
                 icon: 'home'
             },
             {
+                title: 'Categories',
+                url: '/categories',
+                icon: 'ios-apps'
+            },
+            {
                 title: 'List',
                 url: '/list',
                 icon: 'list'
@@ -1008,6 +1023,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _words_words_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./words/words.component */ "./src/app/words/words.component.ts");
+
 
 
 
@@ -1023,8 +1040,13 @@ var AppModule = /** @class */ (function () {
     }
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]],
+            // components to be used
+            declarations: [
+                _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
+                _words_words_component__WEBPACK_IMPORTED_MODULE_10__["WordsComponent"]
+            ],
             entryComponents: [],
+            // modules to be used
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_9__["HttpClientModule"],
@@ -1036,10 +1058,55 @@ var AppModule = /** @class */ (function () {
                 _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
                 { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] }
             ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
+            // only the root component
+            // angular looks for this to load root component
+            bootstrap: [
+                _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]
+            ]
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/words/words.component.html":
+/*!********************************************!*\
+  !*** ./src/app/words/words.component.html ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<h1>Some Words</h1>"
+
+/***/ }),
+
+/***/ "./src/app/words/words.component.ts":
+/*!******************************************!*\
+  !*** ./src/app/words/words.component.ts ***!
+  \******************************************/
+/*! exports provided: WordsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WordsComponent", function() { return WordsComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var WordsComponent = /** @class */ (function () {
+    function WordsComponent() {
+    }
+    WordsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-words',
+            template: __webpack_require__(/*! ./words.component.html */ "./src/app/words/words.component.html")
+        })
+    ], WordsComponent);
+    return WordsComponent;
 }());
 
 

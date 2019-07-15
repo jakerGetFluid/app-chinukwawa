@@ -13,7 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { WordsComponent } from './words/words.component';
 
 @NgModule({
-  // components to be used 
+  // components to be used
   declarations: [
     AppComponent,
     WordsComponent
