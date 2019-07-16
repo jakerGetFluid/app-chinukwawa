@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Category</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card *ngFor="let catPost of catPosts">
+    <ion-card-header>
+      <ion-card-title [innerHTML]="catPost.title.rendered"></ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button color="light" href="/word/{{ catPost.slug }}" routerDirection="root">View</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

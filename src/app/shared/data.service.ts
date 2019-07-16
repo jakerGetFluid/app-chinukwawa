@@ -11,10 +11,15 @@ const ENDPOINT_URL = environment.endpointURL;
     providedIn: 'root'
 })
 export class DataService {
+
     items: any[];
     categories: any[];
+    postsInCat: any[];
+    thisCatId = null;
+
     constructor(private http: HttpClient) {
     }
+
     /**
      * Gets a page of posts or all posts formerly fetched
      */
@@ -58,5 +63,22 @@ export class DataService {
 
     getCategoryBySlug(slug): any {
         return this.categories.find(category => category.slug === slug);
+    }
+
+    /**
+     * Gets all words in the category
+     */
+    getWordsInCategory(slug): any {
+        return this.http.get(ENDPOINT_URL + 'wp/v2/words?word-categories=' + slug).map(this.processCategoryPosts, this);
+    }
+    processCategoryPosts(data: any[]) {
+        this.postsInCat = data;
+        return this.postsInCat;
+    }
+
+    getCategoryName(id): any {
+        if (this.categories) {
+            console.log(this.categories);
+        }
     }
 }
