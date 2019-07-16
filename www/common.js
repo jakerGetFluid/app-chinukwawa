@@ -165,6 +165,7 @@ var ENDPOINT_URL = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["envir
 var DataService = /** @class */ (function () {
     function DataService(http) {
         this.http = http;
+        this.thisCatId = null;
     }
     /**
      * Gets a page of posts or all posts formerly fetched
@@ -209,6 +210,21 @@ var DataService = /** @class */ (function () {
     };
     DataService.prototype.getCategoryBySlug = function (slug) {
         return this.categories.find(function (category) { return category.slug === slug; });
+    };
+    /**
+     * Gets all words in the category
+     */
+    DataService.prototype.getWordsInCategory = function (slug) {
+        return this.http.get(ENDPOINT_URL + 'wp/v2/words?word-categories=' + slug).map(this.processCategoryPosts, this);
+    };
+    DataService.prototype.processCategoryPosts = function (data) {
+        this.postsInCat = data;
+        return this.postsInCat;
+    };
+    DataService.prototype.getCategoryName = function (id) {
+        if (this.categories) {
+            console.log(this.categories);
+        }
     };
     DataService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({

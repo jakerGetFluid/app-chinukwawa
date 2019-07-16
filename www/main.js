@@ -842,6 +842,11 @@ var map = {
 		"common",
 		"categories-categories-module"
 	],
+	"./category/category.module": [
+		"./src/app/category/category.module.ts",
+		"common",
+		"category-category-module"
+	],
 	"./home/home.module": [
 		"./src/app/home/home.module.ts",
 		"common",
@@ -907,6 +912,10 @@ var routes = [
     {
         path: 'categories',
         loadChildren: './categories/categories.module#CategoriesPageModule'
+    },
+    {
+        path: 'category/:slug',
+        loadChildren: './category/category.module#CategoryPageModule'
     }
 ];
 var AppRoutingModule = /** @class */ (function () {
