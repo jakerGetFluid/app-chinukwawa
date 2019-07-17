@@ -94,15 +94,7 @@ export class DataService {
         if (this.thisWord) {
             return of(this.thisWord);
         } else {
-            console.log('wp/v2/words?slug=' + slug);
-            console.log(this.http.get(ENDPOINT_URL + 'wp/v2/words?slug=' + slug));
             return this.http.get(ENDPOINT_URL + 'wp/v2/words?slug=' + slug);
         }
-    }
-    processPost(data: any[]) {
-        console.log('test');
-        this.thisWord = data;
-        console.log(this.thisWord);
-        return this.thisWord;
     }
 }
