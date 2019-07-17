@@ -58,7 +58,7 @@ var CategoryPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>Category</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-card *ngFor=\"let catPost of catPosts\">\n    <ion-card-header>\n      <ion-card-title [innerHTML]=\"catPost.title.rendered\"></ion-card-title>\n    </ion-card-header>\n    <ion-card-content>\n      <ion-button color=\"light\" href=\"/word/{{ catPost.slug }}\" routerDirection=\"root\">View</ion-button>\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>Category</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-card *ngFor=\"let catPost of catPosts\">\n    <ion-card-header>\n      <ion-card-title [innerHTML]=\"catPost.title.rendered\"></ion-card-title>\n    </ion-card-header>\n    <ion-card-content>\n      <ion-button color=\"light\" href=\"{{ catPost.slug }}\" routerDirection=\"root\">View</ion-button>\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n"
 
 /***/ }),
 

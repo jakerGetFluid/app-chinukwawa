@@ -57,7 +57,7 @@ var HomePageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>Home</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-list lines=\"none\">\n    <!-- posts -->\n    <ion-list-header>\n      <ion-label>Words</ion-label>\n    </ion-list-header>\n\n    <ion-card *ngFor=\"let item of items\">\n      <ion-card-header>\n        <ion-card-title [innerHTML]=\"item.title.rendered\"></ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        <div>\n          <p>\n            <b>{{ item.acf.simple_translation }} &nbsp;-&nbsp;</b>\n            <i>{{ item.acf.word_type }}</i>\n          </p>\n        </div>\n        <div [innerHTML]=\"item.content.rendered\"></div>\n        <ion-button color=\"light\" (click)=\"onChangeText()\">{{ text }}</ion-button>\n      </ion-card-content>\n    </ion-card>\n    \n  </ion-list>\n</ion-content>\n"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>Home</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-list lines=\"none\">\n    <!-- posts -->\n    <ion-list-header>\n      <ion-label>Words</ion-label>\n    </ion-list-header>\n\n    <ion-card *ngFor=\"let item of items\">\n      <ion-card-header>\n        <ion-card-title [innerHTML]=\"item.title.rendered\"></ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        <div>\n          <p>\n            <b>{{ item.acf.simple_translation }} &nbsp;-&nbsp;</b>\n            <i>{{ item.acf.word_type }}</i>\n          </p>\n        </div>\n        <div [innerHTML]=\"item.content.rendered\"></div>\n        <ion-button color=\"light\" href=\"word/{{ item.slug }}\">{{ text }}</ion-button>\n      </ion-card-content>\n    </ion-card>\n    \n  </ion-list>\n</ion-content>\n"
 
 /***/ }),
 
@@ -91,7 +91,7 @@ __webpack_require__.r(__webpack_exports__);
 var HomePage = /** @class */ (function () {
     function HomePage(dataService) {
         this.dataService = dataService;
-        this.text = 'Default starting text';
+        this.text = 'Learn More';
     }
     HomePage.prototype.ngOnInit = function () {
         var _this = this;
@@ -99,9 +99,6 @@ var HomePage = /** @class */ (function () {
             _this.items = data;
             console.log('ngOnInit() > items: %o', _this.items);
         });
-    };
-    HomePage.prototype.onChangeText = function () {
-        this.text = 'Changed!';
     };
     HomePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

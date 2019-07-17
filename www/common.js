@@ -226,6 +226,20 @@ var DataService = /** @class */ (function () {
             console.log(this.categories);
         }
     };
+    /**
+    * Gets word by slug
+    */
+    DataService.prototype.getPostBySlug = function (slug) {
+        // original tutorial way (throws an error) :
+        // return this.items.find(item => item.slug === slug);
+        // custom way:
+        if (this.thisWord) {
+            return Object(rxjs_observable_of__WEBPACK_IMPORTED_MODULE_5__["of"])(this.thisWord);
+        }
+        else {
+            return this.http.get(ENDPOINT_URL + 'wp/v2/words?slug=' + slug);
+        }
+    };
     DataService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'

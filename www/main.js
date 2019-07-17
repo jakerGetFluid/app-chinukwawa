@@ -855,6 +855,11 @@ var map = {
 	"./list/list.module": [
 		"./src/app/list/list.module.ts",
 		"list-list-module"
+	],
+	"./post/post.module": [
+		"./src/app/post/post.module.ts",
+		"common",
+		"post-post-module"
 	]
 };
 function webpackAsyncContext(req) {
@@ -916,6 +921,10 @@ var routes = [
     {
         path: 'category/:slug',
         loadChildren: './category/category.module#CategoryPageModule'
+    },
+    {
+        path: 'word/:slug',
+        loadChildren: './post/post.module#PostPageModule'
     }
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -1044,6 +1053,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// import { CategoryPageModule } from './category/category.module';
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -1060,7 +1070,7 @@ var AppModule = /** @class */ (function () {
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_9__["HttpClientModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(),
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"]
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"],
             ],
             providers: [
                 _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
