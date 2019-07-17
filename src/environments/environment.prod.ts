@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  endpointURL: 'https://api.chinukwawa.test/wp-json/'
+  endpointURL: 'http://api.chinukwawa.subtextdev.com/wp-json/'
 };

@@ -16,6 +16,7 @@ export class DataService {
     categories: any[];
     postsInCat: any[];
     thisCatId = null;
+    thisWord: any[];
 
     constructor(private http: HttpClient) {
     }
@@ -80,5 +81,28 @@ export class DataService {
         if (this.categories) {
             console.log(this.categories);
         }
+    }
+
+    /**
+    * Gets word by slug
+    */
+    getPostBySlug(slug): any {
+        // original tutorial way (throws an error) :
+        // return this.items.find(item => item.slug === slug);
+
+        // custom way:
+        if (this.thisWord) {
+            return of(this.thisWord);
+        } else {
+            console.log('wp/v2/words?slug=' + slug);
+            console.log(this.http.get(ENDPOINT_URL + 'wp/v2/words?slug=' + slug));
+            return this.http.get(ENDPOINT_URL + 'wp/v2/words?slug=' + slug);
+        }
+    }
+    processPost(data: any[]) {
+        console.log('test');
+        this.thisWord = data;
+        console.log(this.thisWord);
+        return this.thisWord;
     }
 }

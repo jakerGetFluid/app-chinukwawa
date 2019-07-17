@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { WordsComponent } from './words/words.component';
 
+// import { CategoryPageModule } from './category/category.module';
+
 @NgModule({
   // components to be used
   declarations: [
@@ -26,7 +28,8 @@ import { WordsComponent } from './words/words.component';
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    // CategoryPageModule
   ],
   providers: [
     StatusBar,

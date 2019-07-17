@@ -7,6 +7,7 @@ import {DataService} from '../shared/data.service';
 })
 export class HomePage implements OnInit {
     items: any[];
+    text = 'Learn More';
 
     constructor(public dataService: DataService) {
     }
@@ -17,9 +18,4 @@ export class HomePage implements OnInit {
         });
     }
 
-    text = 'Default starting text';
-
-    onChangeText() {
-      this.text = 'Changed!';
-    }
 }

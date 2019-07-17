@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'category/:slug',
     loadChildren: './category/category.module#CategoryPageModule'
+  },
+  {
+    path: 'word/:slug',
+    loadChildren: './post/post.module#PostPageModule'
   }
 ];
 
