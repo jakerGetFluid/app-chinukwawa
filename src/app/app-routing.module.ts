@@ -20,7 +20,7 @@ const routes: Routes = [
     loadChildren: './categories/categories.module#CategoriesPageModule'
   },
   {
-    path: 'category/:slug',
+    path: 'word-categories/:slug',
     loadChildren: './category/category.module#CategoryPageModule'
   },
   {

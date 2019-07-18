@@ -12,13 +12,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { WordsComponent } from './words/words.component';
 
-// import { CategoryPageModule } from './category/category.module';
+import { CategoryPageModule } from './category/category.module';
+import { PostPageModule } from './post/post.module';
 
 @NgModule({
   // components to be used
   declarations: [
     AppComponent,
-    WordsComponent
+    WordsComponent,
   ],
   entryComponents: [
 
@@ -29,7 +30,8 @@ import { WordsComponent } from './words/words.component';
     HttpClientModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    // CategoryPageModule
+    CategoryPageModule,
+    PostPageModule
   ],
   providers: [
     StatusBar,

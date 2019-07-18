@@ -19,7 +19,7 @@
         <ion-card-title [innerHTML]="category.name"></ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <ion-button color="light" href="/category/{{ category.id }}" routerDirection="root">See All</ion-button>
+        <ion-button color="light" [routerLink]="['/word-categories', category.id]">See All</ion-button>
       </ion-card-content>
     </ion-card>
 

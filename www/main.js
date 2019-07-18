@@ -839,17 +839,13 @@ module.exports = webpackAsyncContext;
 var map = {
 	"./categories/categories.module": [
 		"./src/app/categories/categories.module.ts",
-		"common",
 		"categories-categories-module"
 	],
 	"./category/category.module": [
-		"./src/app/category/category.module.ts",
-		"common",
-		"category-category-module"
+		"./src/app/category/category.module.ts"
 	],
 	"./home/home.module": [
 		"./src/app/home/home.module.ts",
-		"common",
 		"home-home-module"
 	],
 	"./list/list.module": [
@@ -857,9 +853,7 @@ var map = {
 		"list-list-module"
 	],
 	"./post/post.module": [
-		"./src/app/post/post.module.ts",
-		"common",
-		"post-post-module"
+		"./src/app/post/post.module.ts"
 	]
 };
 function webpackAsyncContext(req) {
@@ -919,7 +913,7 @@ var routes = [
         loadChildren: './categories/categories.module#CategoriesPageModule'
     },
     {
-        path: 'category/:slug',
+        path: 'word-categories/:slug',
         loadChildren: './category/category.module#CategoryPageModule'
     },
     {
@@ -1042,6 +1036,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _words_words_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./words/words.component */ "./src/app/words/words.component.ts");
+/* harmony import */ var _category_category_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./category/category.module */ "./src/app/category/category.module.ts");
+/* harmony import */ var _post_post_module__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./post/post.module */ "./src/app/post/post.module.ts");
 
 
 
@@ -1053,7 +1049,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// import { CategoryPageModule } from './category/category.module';
+
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -1062,7 +1059,7 @@ var AppModule = /** @class */ (function () {
             // components to be used
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
-                _words_words_component__WEBPACK_IMPORTED_MODULE_10__["WordsComponent"]
+                _words_words_component__WEBPACK_IMPORTED_MODULE_10__["WordsComponent"],
             ],
             entryComponents: [],
             // modules to be used
@@ -1071,6 +1068,8 @@ var AppModule = /** @class */ (function () {
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_9__["HttpClientModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(),
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"],
+                _category_category_module__WEBPACK_IMPORTED_MODULE_11__["CategoryPageModule"],
+                _post_post_module__WEBPACK_IMPORTED_MODULE_12__["PostPageModule"]
             ],
             providers: [
                 _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
@@ -1085,6 +1084,370 @@ var AppModule = /** @class */ (function () {
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/category/category.module.ts":
+/*!*********************************************!*\
+  !*** ./src/app/category/category.module.ts ***!
+  \*********************************************/
+/*! exports provided: CategoryPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CategoryPageModule", function() { return CategoryPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _category_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./category.page */ "./src/app/category/category.page.ts");
+
+
+
+
+
+
+
+var CategoryPageModule = /** @class */ (function () {
+    function CategoryPageModule() {
+    }
+    CategoryPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            imports: [
+                _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+                _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"],
+                _angular_router__WEBPACK_IMPORTED_MODULE_5__["RouterModule"].forChild([
+                    {
+                        path: '',
+                        component: _category_page__WEBPACK_IMPORTED_MODULE_6__["CategoryPage"]
+                    }
+                ])
+            ],
+            declarations: [_category_page__WEBPACK_IMPORTED_MODULE_6__["CategoryPage"]]
+        })
+    ], CategoryPageModule);
+    return CategoryPageModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/category/category.page.html":
+/*!*********************************************!*\
+  !*** ./src/app/category/category.page.html ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>Category</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-button color=\"light\" (click)=\"backClicked()\"><ion-icon name=\"arrow-back\"></ion-icon> Go Back</ion-button>\n  <ion-card *ngFor=\"let catPost of catPosts\">\n    <ion-card-header>\n      <ion-card-title [innerHTML]=\"catPost.title.rendered\"></ion-card-title>\n    </ion-card-header>\n    <ion-card-content>\n      <ion-button color=\"light\" [routerLink]=\"['/word/', catPost.slug]\">View</ion-button>\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n"
+
+/***/ }),
+
+/***/ "./src/app/category/category.page.scss":
+/*!*********************************************!*\
+  !*** ./src/app/category/category.page.scss ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NhdGVnb3J5L2NhdGVnb3J5LnBhZ2Uuc2NzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/category/category.page.ts":
+/*!*******************************************!*\
+  !*** ./src/app/category/category.page.ts ***!
+  \*******************************************/
+/*! exports provided: CategoryPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CategoryPage", function() { return CategoryPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _shared_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../shared/data.service */ "./src/app/shared/data.service.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+
+
+
+
+
+var CategoryPage = /** @class */ (function () {
+    function CategoryPage(route, dataService, _location) {
+        this.route = route;
+        this.dataService = dataService;
+        this._location = _location;
+    }
+    CategoryPage.prototype.ngOnInit = function () {
+        var _this = this;
+        var catId = this.route.snapshot.paramMap.get('slug');
+        var catName = this.dataService.getCategoryName(catId);
+        console.log(catName);
+        this.dataService.getWordsInCategory(catId).subscribe(function (data) {
+            _this.catPosts = data;
+            console.log('ngOnInit() > posts in cat: %o', _this.catPosts);
+        });
+    };
+    CategoryPage.prototype.backClicked = function () {
+        this._location.back();
+    };
+    CategoryPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-category',
+            template: __webpack_require__(/*! ./category.page.html */ "./src/app/category/category.page.html"),
+            styles: [__webpack_require__(/*! ./category.page.scss */ "./src/app/category/category.page.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _shared_data_service__WEBPACK_IMPORTED_MODULE_3__["DataService"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["Location"]])
+    ], CategoryPage);
+    return CategoryPage;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/post/post.module.ts":
+/*!*************************************!*\
+  !*** ./src/app/post/post.module.ts ***!
+  \*************************************/
+/*! exports provided: PostPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PostPageModule", function() { return PostPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _post_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./post.page */ "./src/app/post/post.page.ts");
+
+
+
+
+
+
+
+var PostPageModule = /** @class */ (function () {
+    function PostPageModule() {
+    }
+    PostPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            imports: [
+                _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+                _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"],
+                _angular_router__WEBPACK_IMPORTED_MODULE_5__["RouterModule"].forChild([
+                    {
+                        path: '',
+                        component: _post_page__WEBPACK_IMPORTED_MODULE_6__["PostPage"]
+                    }
+                ]),
+            ],
+            declarations: [_post_page__WEBPACK_IMPORTED_MODULE_6__["PostPage"]]
+        })
+    ], PostPageModule);
+    return PostPageModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/post/post.page.html":
+/*!*************************************!*\
+  !*** ./src/app/post/post.page.html ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>Word Details</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding *ngFor=\"let item of items\">\n  <ion-button color=\"light\" (click)=\"backClicked()\"><ion-icon name=\"arrow-back\"></ion-icon> Go Back</ion-button>\n  <ion-card>\n      <ion-card-header>\n        <ion-card-title [innerHTML]=\"item.title.rendered\"></ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        <div>\n          <p>\n            <b>{{ item.acf.simple_translation }} &nbsp;-&nbsp;</b>\n            <i>{{ item.acf.word_type }}</i>\n          </p>\n        </div>\n        <div [innerHTML]=\"item.content.rendered\"></div>\n      </ion-card-content>\n    </ion-card>\n</ion-content>\n"
+
+/***/ }),
+
+/***/ "./src/app/post/post.page.scss":
+/*!*************************************!*\
+  !*** ./src/app/post/post.page.scss ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3Bvc3QvcG9zdC5wYWdlLnNjc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/post/post.page.ts":
+/*!***********************************!*\
+  !*** ./src/app/post/post.page.ts ***!
+  \***********************************/
+/*! exports provided: PostPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PostPage", function() { return PostPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _shared_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../shared/data.service */ "./src/app/shared/data.service.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+
+
+
+
+
+var PostPage = /** @class */ (function () {
+    function PostPage(route, dataService, _location) {
+        this.route = route;
+        this.dataService = dataService;
+        this._location = _location;
+    }
+    PostPage.prototype.ngOnInit = function () {
+        var _this = this;
+        var itemSlug = this.route.snapshot.paramMap.get('slug');
+        this.dataService.getPostBySlug(itemSlug).subscribe(function (data) {
+            _this.items = data;
+            console.log('ngOnInit() > items: %o', _this.items);
+        });
+    };
+    PostPage.prototype.backClicked = function () {
+        this._location.back();
+    };
+    PostPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-post',
+            template: __webpack_require__(/*! ./post.page.html */ "./src/app/post/post.page.html"),
+            styles: [__webpack_require__(/*! ./post.page.scss */ "./src/app/post/post.page.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _shared_data_service__WEBPACK_IMPORTED_MODULE_3__["DataService"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["Location"]])
+    ], PostPage);
+    return PostPage;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/shared/data.service.ts":
+/*!****************************************!*\
+  !*** ./src/app/shared/data.service.ts ***!
+  \****************************************/
+/*! exports provided: DataService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DataService", function() { return DataService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm5/add/operator/map.js");
+/* harmony import */ var rxjs_observable_of__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/observable/of */ "./node_modules/rxjs-compat/_esm5/observable/of.js");
+
+
+
+
+
+
+var ENDPOINT_URL = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].endpointURL;
+var DataService = /** @class */ (function () {
+    function DataService(http) {
+        this.http = http;
+        this.thisCatId = null;
+    }
+    /**
+     * Gets a page of posts or all posts formerly fetched
+     */
+    DataService.prototype.getWords = function () {
+        if (this.items) {
+            // The of operator accepts a number of items as parameters, and returns an Observable that emits each of
+            // these parameters, in order, as its emitted sequence. In this case, we will only be returning this.items
+            // to any subscriber.
+            return Object(rxjs_observable_of__WEBPACK_IMPORTED_MODULE_5__["of"])(this.items);
+        }
+        else {
+            // http.get() creates an observable.
+            // map() creates and returns its own new observable from the observable that http.get() created,
+            // which we can then subscribe to. Therefore, we can subscribe to the result of this method.
+            //
+            // The Map operator applies a function of your choosing to each item emitted by the source Observable, and
+            // returns an Observable that emits the results of these function applications.
+            return this.http.get(ENDPOINT_URL + 'wp/v2/words').map(this.processPostData, this);
+        }
+    };
+    // A place for post-processing, before making the fetched data available to view.
+    DataService.prototype.processPostData = function (data) {
+        // Do post-processing code here (if useful)
+        this.items = data;
+        return this.items;
+    };
+    /**
+     * Gets all word categories
+     */
+    DataService.prototype.getWordCategories = function () {
+        if (this.categories) {
+            return Object(rxjs_observable_of__WEBPACK_IMPORTED_MODULE_5__["of"])(this.categories);
+        }
+        else {
+            return this.http.get(ENDPOINT_URL + 'wp/v2/word-categories').map(this.processCategoryData, this);
+        }
+    };
+    DataService.prototype.processCategoryData = function (data) {
+        this.categories = data;
+        return this.categories;
+    };
+    DataService.prototype.getCategoryBySlug = function (slug) {
+        return this.categories.find(function (category) { return category.slug === slug; });
+    };
+    /**
+     * Gets all words in the category
+     */
+    DataService.prototype.getWordsInCategory = function (slug) {
+        return this.http.get(ENDPOINT_URL + 'wp/v2/words?word-categories=' + slug).map(this.processCategoryPosts, this);
+    };
+    DataService.prototype.processCategoryPosts = function (data) {
+        this.postsInCat = data;
+        return this.postsInCat;
+    };
+    DataService.prototype.getCategoryName = function (id) {
+        if (this.categories) {
+            console.log(this.categories);
+        }
+    };
+    /**
+    * Gets word by slug
+    */
+    DataService.prototype.getPostBySlug = function (slug) {
+        // original tutorial way (throws an error) :
+        // return this.items.find(item => item.slug === slug);
+        // custom way:
+        if (this.thisWord) {
+            return Object(rxjs_observable_of__WEBPACK_IMPORTED_MODULE_5__["of"])(this.thisWord);
+        }
+        else {
+            return this.http.get(ENDPOINT_URL + 'wp/v2/words?slug=' + slug);
+        }
+    };
+    DataService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
+    ], DataService);
+    return DataService;
 }());
 
 

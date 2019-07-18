@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../shared/data.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-category',
@@ -8,9 +9,10 @@ import { DataService } from '../shared/data.service';
   styleUrls: ['./category.page.scss'],
 })
 export class CategoryPage implements OnInit {
+  
   catPosts: any[];
 
-  constructor(private route: ActivatedRoute, public dataService: DataService) { }
+  constructor(private route: ActivatedRoute, public dataService: DataService, private _location: Location) { }
 
   ngOnInit() {
     const catId = this.route.snapshot.paramMap.get('slug');
@@ -22,7 +24,10 @@ export class CategoryPage implements OnInit {
       this.catPosts = data;
       console.log('ngOnInit() > posts in cat: %o', this.catPosts);
     });
+  }
 
+  backClicked() {
+    this._location.back();
   }
 
 }

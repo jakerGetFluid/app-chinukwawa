@@ -58,7 +58,7 @@ var CategoriesPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>Categories</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-list lines=\"none\">\n    <!-- word categories -->\n    <ion-list-header>\n      <ion-label>Word Categories</ion-label>\n    </ion-list-header>\n\n    <ion-card *ngFor=\"let category of categories\">\n      <ion-card-header>\n        <ion-card-title [innerHTML]=\"category.name\"></ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        <ion-button color=\"light\" href=\"/category/{{ category.id }}\" routerDirection=\"root\">See All</ion-button>\n      </ion-card-content>\n    </ion-card>\n\n  </ion-list>\n</ion-content>\n"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>Categories</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-list lines=\"none\">\n    <!-- word categories -->\n    <ion-list-header>\n      <ion-label>Word Categories</ion-label>\n    </ion-list-header>\n\n    <ion-card *ngFor=\"let category of categories\">\n      <ion-card-header>\n        <ion-card-title [innerHTML]=\"category.name\"></ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        <ion-button color=\"light\" [routerLink]=\"['/word-categories', category.id]\">See All</ion-button>\n      </ion-card-content>\n    </ion-card>\n\n  </ion-list>\n</ion-content>\n"
 
 /***/ }),
 

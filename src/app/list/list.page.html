@@ -9,19 +9,28 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-icon [name]="item.icon" slot="start"></ion-icon>
-      {{item.title}}
-      <div class="item-note" slot="end">
-        {{item.note}}
-      </div>
-    </ion-item>
+<ion-content padding>
+  <ion-list lines="none">
+    <!-- posts -->
+    <ion-list-header>
+      <ion-label>Words</ion-label>
+    </ion-list-header>
+
+    <ion-card *ngFor="let item of items">
+      <ion-card-header>
+        <ion-card-title [innerHTML]="item.title.rendered"></ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div>
+          <p>
+            <b>{{ item.acf.simple_translation }} &nbsp;-&nbsp;</b>
+            <i>{{ item.acf.word_type }}</i>
+          </p>
+        </div>
+        <div [innerHTML]="item.content.rendered"></div>
+        <ion-button color="light" [routerLink]="['/word/', item.slug]">{{ text }}</ion-button>
+      </ion-card-content>
+    </ion-card>
+    
   </ion-list>
-  <!--
-    <div *ngIf="selectedItem" padding>
-      You navigated here from <b>{{selectedItem.title }}</b>
-    </div>
-  -->
 </ion-content>

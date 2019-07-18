@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Home</ion-title>
+    <ion-title>Welcome</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,24 +11,21 @@
   <ion-list lines="none">
     <!-- posts -->
     <ion-list-header>
-      <ion-label>Words</ion-label>
+      <ion-label>Chinuk Wawa Language</ion-label>
     </ion-list-header>
 
-    <ion-card *ngFor="let item of items">
-      <ion-card-header>
-        <ion-card-title [innerHTML]="item.title.rendered"></ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <div>
-          <p>
-            <b>{{ item.acf.simple_translation }} &nbsp;-&nbsp;</b>
-            <i>{{ item.acf.word_type }}</i>
-          </p>
-        </div>
-        <div [innerHTML]="item.content.rendered"></div>
-        <ion-button color="light" href="word/{{ item.slug }}">{{ text }}</ion-button>
-      </ion-card-content>
-    </ion-card>
+    <!-- language button -->
+    <ion-item>
+      <ion-button routerLink="/categories" size="large" expand="block" fill="outline" color="primary">Language</ion-button>
+    </ion-item>
+    <!-- cultural notes -->
+    <ion-item>
+      <ion-button routerLink="/categories" size="large" expand="block" fill="outline" color="secondary">Cultural Notes</ion-button>
+    </ion-item>
+    <!-- search -->
+    <ion-item>
+      <ion-button routerLink="/categories" fill="outline" color="tertiary" size="large" expand="block">Search</ion-button>
+    </ion-item>
     
   </ion-list>
 </ion-content>

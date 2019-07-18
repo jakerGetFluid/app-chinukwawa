@@ -57,7 +57,7 @@ var ListPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>\n      List\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item *ngFor=\"let item of items\">\n      <ion-icon [name]=\"item.icon\" slot=\"start\"></ion-icon>\n      {{item.title}}\n      <div class=\"item-note\" slot=\"end\">\n        {{item.note}}\n      </div>\n    </ion-item>\n  </ion-list>\n  <!--\n    <div *ngIf=\"selectedItem\" padding>\n      You navigated here from <b>{{selectedItem.title }}</b>\n    </div>\n  -->\n</ion-content>\n"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>\n      List\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-list lines=\"none\">\n    <!-- posts -->\n    <ion-list-header>\n      <ion-label>Words</ion-label>\n    </ion-list-header>\n\n    <ion-card *ngFor=\"let item of items\">\n      <ion-card-header>\n        <ion-card-title [innerHTML]=\"item.title.rendered\"></ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        <div>\n          <p>\n            <b>{{ item.acf.simple_translation }} &nbsp;-&nbsp;</b>\n            <i>{{ item.acf.word_type }}</i>\n          </p>\n        </div>\n        <div [innerHTML]=\"item.content.rendered\"></div>\n        <ion-button color=\"light\" [routerLink]=\"['/word/', item.slug]\">{{ text }}</ion-button>\n      </ion-card-content>\n    </ion-card>\n    \n  </ion-list>\n</ion-content>\n"
 
 /***/ }),
 
@@ -84,32 +84,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListPage", function() { return ListPage; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _shared_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/data.service */ "./src/app/shared/data.service.ts");
+
 
 
 var ListPage = /** @class */ (function () {
-    function ListPage() {
-        this.icons = [
-            'flask',
-            'wifi',
-            'beer',
-            'football',
-            'basketball',
-            'paper-plane',
-            'american-football',
-            'boat',
-            'bluetooth',
-            'build'
-        ];
-        this.items = [];
-        for (var i = 1; i < 11; i++) {
-            this.items.push({
-                title: 'Item ' + i,
-                note: 'This is item #' + i,
-                icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-            });
-        }
+    function ListPage(dataService) {
+        this.dataService = dataService;
+        this.text = 'Learn More';
     }
     ListPage.prototype.ngOnInit = function () {
+        var _this = this;
+        this.dataService.getWords().subscribe(function (data) {
+            _this.items = data;
+            console.log('ngOnInit() > items: %o', _this.items);
+        });
     };
     ListPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -117,7 +106,7 @@ var ListPage = /** @class */ (function () {
             template: __webpack_require__(/*! ./list.page.html */ "./src/app/list/list.page.html"),
             styles: [__webpack_require__(/*! ./list.page.scss */ "./src/app/list/list.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_shared_data_service__WEBPACK_IMPORTED_MODULE_2__["DataService"]])
     ], ListPage);
     return ListPage;
 }());
