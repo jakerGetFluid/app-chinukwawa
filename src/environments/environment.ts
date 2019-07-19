@@ -3,11 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  endpointURL: 'https://api.chinukwawa.test/wp-json/'
+  // production: false,
+  // endpointURL: 'https://api.chinukwawa.test/wp-json/'
 
-  // production: true,
-  // endpointURL: 'http://api.chinukwawa.subtextdev.com/wp-json/'
+  production: true,
+  endpointURL: 'http://api.chinukwawa.subtextdev.com/wp-json/'
 };
 
 /*

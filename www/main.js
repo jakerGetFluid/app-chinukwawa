@@ -1147,7 +1147,7 @@ var CategoryPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>Category</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-button color=\"light\" (click)=\"backClicked()\"><ion-icon name=\"arrow-back\"></ion-icon> Go Back</ion-button>\n  <ion-card *ngFor=\"let catPost of catPosts\">\n    <ion-card-header>\n      <ion-card-title [innerHTML]=\"catPost.title.rendered\"></ion-card-title>\n    </ion-card-header>\n    <ion-card-content>\n      <ion-button color=\"light\" [routerLink]=\"['/word/', catPost.slug]\">View</ion-button>\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>{{ catInfo }}</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-button color=\"light\" (click)=\"backClicked()\"><ion-icon name=\"arrow-back\"></ion-icon> Go Back</ion-button>\n  <ion-slides pager=\"true\" [options]='{\n                                        autoHeight: true,\n                                        centeredSlides: true\n                                      }'>\n    <ion-slide *ngFor=\"let catPost of catPosts\">\n      <ion-card>\n        <ion-card-header>\n          <ion-card-title [innerHTML]=\"catPost.title.rendered\"></ion-card-title>\n        </ion-card-header>\n        <ion-card-content>\n          <div>\n            <p>\n              <b>{{ catPost.acf.simple_translation }} &nbsp;-&nbsp;</b>\n              <i>{{ catPost.acf.word_type }}</i>\n            </p>\n          </div>\n          <div [innerHTML]=\"catPost.content.rendered\"></div>\n          <ion-button fill=\"outline\" [routerLink]=\"['/word/', catPost.slug]\">View</ion-button>\n        </ion-card-content>\n      </ion-card>\n    </ion-slide>\n  </ion-slides>\n</ion-content>\n"
 
 /***/ }),
 
@@ -1191,11 +1191,13 @@ var CategoryPage = /** @class */ (function () {
     CategoryPage.prototype.ngOnInit = function () {
         var _this = this;
         var catId = this.route.snapshot.paramMap.get('slug');
-        var catName = this.dataService.getCategoryName(catId);
-        console.log(catName);
+        this.dataService.getCategoryName(catId).subscribe(function (catData) {
+            _this.catInfo = catData.name;
+            // console.log(this.catInfo);
+        });
         this.dataService.getWordsInCategory(catId).subscribe(function (data) {
             _this.catPosts = data;
-            console.log('ngOnInit() > posts in cat: %o', _this.catPosts);
+            // console.log('ngOnInit() > posts in cat: %o', this.catPosts);
         });
     };
     CategoryPage.prototype.backClicked = function () {
@@ -1422,9 +1424,12 @@ var DataService = /** @class */ (function () {
         this.postsInCat = data;
         return this.postsInCat;
     };
+    /**
+    * Get category name
+    */
     DataService.prototype.getCategoryName = function (id) {
-        if (this.categories) {
-            console.log(this.categories);
+        if (id) {
+            return this.http.get(ENDPOINT_URL + 'wp/v2/word-categories/' + id);
         }
     };
     /**
