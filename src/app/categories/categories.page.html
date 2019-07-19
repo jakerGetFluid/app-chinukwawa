@@ -10,16 +10,12 @@
 <ion-content padding>
   <ion-list lines="none">
     <!-- word categories -->
-    <ion-list-header>
-      <ion-label>Word Categories</ion-label>
-    </ion-list-header>
-
     <ion-card *ngFor="let category of categories">
       <ion-card-header>
         <ion-card-title [innerHTML]="category.name"></ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <ion-button color="light" [routerLink]="['/word-categories', category.id]">See All</ion-button>
+        <ion-button fill="outline" [routerLink]="['/word-categories', category.id]">See All</ion-button>
       </ion-card-content>
     </ion-card>
 

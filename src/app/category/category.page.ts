@@ -11,18 +11,21 @@ import { Location } from '@angular/common';
 export class CategoryPage implements OnInit {
   
   catPosts: any[];
+  catInfo: any;
 
   constructor(private route: ActivatedRoute, public dataService: DataService, private _location: Location) { }
 
   ngOnInit() {
     const catId = this.route.snapshot.paramMap.get('slug');
 
-    const catName = this.dataService.getCategoryName(catId);
-    console.log(catName);
+    this.dataService.getCategoryName(catId).subscribe((catData: any) => {
+      this.catInfo = catData.name;
+      // console.log(this.catInfo);
+    });
 
     this.dataService.getWordsInCategory(catId).subscribe((data: any[]) => {
       this.catPosts = data;
-      console.log('ngOnInit() > posts in cat: %o', this.catPosts);
+      // console.log('ngOnInit() > posts in cat: %o', this.catPosts);
     });
   }
 

@@ -3,18 +3,32 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Category</ion-title>
+    <ion-title>{{ catInfo }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
   <ion-button color="light" (click)="backClicked()"><ion-icon name="arrow-back"></ion-icon> Go Back</ion-button>
-  <ion-card *ngFor="let catPost of catPosts">
-    <ion-card-header>
-      <ion-card-title [innerHTML]="catPost.title.rendered"></ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-button color="light" [routerLink]="['/word/', catPost.slug]">View</ion-button>
-    </ion-card-content>
-  </ion-card>
+  <ion-slides pager="true" [options]='{
+                                        autoHeight:true,
+                                        centeredSlides: true
+                                      }'>
+    <ion-slide *ngFor="let catPost of catPosts">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title [innerHTML]="catPost.title.rendered"></ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <div>
+            <p>
+              <b>{{ catPost.acf.simple_translation }} &nbsp;-&nbsp;</b>
+              <i>{{ catPost.acf.word_type }}</i>
+            </p>
+          </div>
+          <div [innerHTML]="catPost.content.rendered"></div>
+          <ion-button fill="outline" [routerLink]="['/word/', catPost.slug]">View</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
 </ion-content>

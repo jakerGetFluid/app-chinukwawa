@@ -77,9 +77,12 @@ export class DataService {
         return this.postsInCat;
     }
 
+    /**
+    * Get category name
+    */
     getCategoryName(id): any {
-        if (this.categories) {
-            console.log(this.categories);
+        if (id) {
+            return this.http.get(ENDPOINT_URL + 'wp/v2/word-categories/' + id);
         }
     }
 

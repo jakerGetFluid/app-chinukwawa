@@ -17,3 +17,9 @@ ion-list ion-item ion-button.button-block {
   display: block;
   width: 100%;
 }
+.swiper-container-horizontal {
+  padding-bottom: 2rem;
+  ion-card-header {
+    padding-bottom: 0;
+  }
+}
