@@ -1147,7 +1147,7 @@ var CategoryPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>{{ catInfo }}</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-button color=\"light\" (click)=\"backClicked()\"><ion-icon name=\"arrow-back\"></ion-icon> Go Back</ion-button>\n  <ion-slides pager=\"true\" [options]='{\n                                        autoHeight: true,\n                                        centeredSlides: true\n                                      }'>\n    <ion-slide *ngFor=\"let catPost of catPosts\">\n      <ion-card>\n        <ion-card-header>\n          <ion-card-title [innerHTML]=\"catPost.title.rendered\"></ion-card-title>\n        </ion-card-header>\n        <ion-card-content>\n          <div>\n            <p>\n              <b>{{ catPost.acf.simple_translation }} &nbsp;-&nbsp;</b>\n              <i>{{ catPost.acf.word_type }}</i>\n            </p>\n          </div>\n          <div [innerHTML]=\"catPost.content.rendered\"></div>\n          <ion-button fill=\"outline\" [routerLink]=\"['/word/', catPost.slug]\">View</ion-button>\n        </ion-card-content>\n      </ion-card>\n    </ion-slide>\n  </ion-slides>\n</ion-content>\n"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>{{ catInfo }}</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <!-- back button -->\n  <ion-button color=\"light\" (click)=\"backClicked()\"><ion-icon name=\"arrow-back\"></ion-icon> Go Back</ion-button>\n\n  <!-- slider -->\n  <ion-slides [hidden]=viewToggle pager=\"true\" [options]='{ autoHeight: true, centeredSlides: true }'>\n    <ion-slide *ngFor=\"let catPost of catPosts\">\n      <ion-card>\n        <ion-card-header>\n          <ion-card-title [innerHTML]=\"catPost.title.rendered\"></ion-card-title>\n        </ion-card-header>\n        <ion-card-content>\n          <div>\n            <p>\n              <b>{{ catPost.acf.simple_translation }} &nbsp;-&nbsp;</b>\n              <i>{{ catPost.acf.word_type }}</i>\n            </p>\n          </div>\n          <div [innerHTML]=\"catPost.content.rendered\"></div>\n          <ion-button fill=\"outline\" [routerLink]=\"['/word/', catPost.slug]\">View</ion-button>\n        </ion-card-content>\n      </ion-card>\n    </ion-slide>\n  </ion-slides>\n\n  <!-- list -->\n  <ion-list [hidden]=!viewToggle class=\"catPosts-list\">\n    <ion-list-header no-padding>\n      <ion-label>List of {{ catInfo }}</ion-label>\n    </ion-list-header>\n    <ion-item *ngFor=\"let catPost of catPosts\" no-padding>\n      <ion-button fill=\"none\" [innerHTML]=\"catPost.title.rendered\" [routerLink]=\"['/word/', catPost.slug]\"></ion-button>\n    </ion-item>\n  </ion-list>\n\n  <!-- toggle button -->\n  <ion-grid class=\"toggler-button\">\n    <ion-row>\n      <ion-col>\n        <ion-button color=\"light\" (click)=viewToggler()><ion-icon [name]=iconToggler></ion-icon><span [innerHTML]=togglerText></span></ion-button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n"
 
 /***/ }),
 
@@ -1158,7 +1158,7 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NhdGVnb3J5L2NhdGVnb3J5LnBhZ2Uuc2NzcyJ9 */"
+module.exports = ".catPosts-list {\n  margin-top: 24px; }\n  .catPosts-list ion-list-header ion-label {\n    text-align: center;\n    margin-left: auto;\n    margin-right: auto; }\n  .toggler-button {\n  padding-top: 16px;\n  text-align: center; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9qYWtlcnlhbi9Eb2N1bWVudHMvc2l0ZXMvY2hpbnVrV2F3YS9zcmMvYXBwL2NhdGVnb3J5L2NhdGVnb3J5LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGdCQUFnQixFQUFBO0VBRGxCO0lBSU0sa0JBQWtCO0lBQ2xCLGlCQUFpQjtJQUNqQixrQkFBa0IsRUFBQTtFQUl4QjtFQUNFLGlCQUFpQjtFQUNqQixrQkFBa0IsRUFBQSIsImZpbGUiOiJzcmMvYXBwL2NhdGVnb3J5L2NhdGVnb3J5LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jYXRQb3N0cy1saXN0IHtcbiAgbWFyZ2luLXRvcDogMjRweDtcbiAgaW9uLWxpc3QtaGVhZGVyIHtcbiAgICBpb24tbGFiZWwge1xuICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgICAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gICAgICBtYXJnaW4tcmlnaHQ6IGF1dG87XG4gICAgfVxuICB9XG59XG4udG9nZ2xlci1idXR0b24ge1xuICBwYWRkaW5nLXRvcDogMTZweDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufSJdfQ== */"
 
 /***/ }),
 
@@ -1187,21 +1187,41 @@ var CategoryPage = /** @class */ (function () {
         this.route = route;
         this.dataService = dataService;
         this._location = _location;
+        // toggle between list and slider view
+        this.timesClicked = 0;
+        this.viewToggle = false;
+        this.togglerText = "<ion-icon name='list-box'></ion-icon> &nbsp; List View";
+        this.iconToggler = "list";
     }
     CategoryPage.prototype.ngOnInit = function () {
         var _this = this;
+        // get this category info
         var catId = this.route.snapshot.paramMap.get('slug');
         this.dataService.getCategoryName(catId).subscribe(function (catData) {
             _this.catInfo = catData.name;
-            // console.log(this.catInfo);
         });
         this.dataService.getWordsInCategory(catId).subscribe(function (data) {
             _this.catPosts = data;
-            // console.log('ngOnInit() > posts in cat: %o', this.catPosts);
         });
     };
+    // back button
     CategoryPage.prototype.backClicked = function () {
         this._location.back();
+    };
+    CategoryPage.prototype.viewToggler = function () {
+        this.timesClicked++;
+        if (this.timesClicked % 2 == 0) {
+            // show list view
+            this.viewToggle = false;
+            this.togglerText = "<ion-icon name='list-box'></ion-icon> &nbsp; List View";
+            this.iconToggler = "list";
+        }
+        else {
+            // show slider view
+            this.viewToggle = true;
+            this.togglerText = "<ion-icon name='albums'></ion-icon> &nbsp; Slide View";
+            this.iconToggler = "albums";
+        }
     };
     CategoryPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

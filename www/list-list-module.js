@@ -91,7 +91,6 @@ __webpack_require__.r(__webpack_exports__);
 var ListPage = /** @class */ (function () {
     function ListPage(dataService) {
         this.dataService = dataService;
-        this.text = 'Learn More';
     }
     ListPage.prototype.ngOnInit = function () {
         var _this = this;

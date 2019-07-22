@@ -33,7 +33,6 @@ export class ListPage implements OnInit {
   // }
 
   items: any[];
-  text = 'Learn More';
 
   constructor(public dataService: DataService) {
   

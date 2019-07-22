@@ -8,11 +8,11 @@
 </ion-header>
 
 <ion-content padding>
+  <!-- back button -->
   <ion-button color="light" (click)="backClicked()"><ion-icon name="arrow-back"></ion-icon> Go Back</ion-button>
-  <ion-slides pager="true" [options]='{
-                                        autoHeight: true,
-                                        centeredSlides: true
-                                      }'>
+
+  <!-- slider -->
+  <ion-slides [hidden]=viewToggle pager="true" [options]='{ autoHeight: true, centeredSlides: true }'>
     <ion-slide *ngFor="let catPost of catPosts">
       <ion-card>
         <ion-card-header>
@@ -31,4 +31,23 @@
       </ion-card>
     </ion-slide>
   </ion-slides>
+
+  <!-- list -->
+  <ion-list [hidden]=!viewToggle class="catPosts-list">
+    <ion-list-header no-padding>
+      <ion-label>List of {{ catInfo }}</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let catPost of catPosts" no-padding>
+      <ion-button fill="none" [innerHTML]="catPost.title.rendered" [routerLink]="['/word/', catPost.slug]"></ion-button>
+    </ion-item>
+  </ion-list>
+
+  <!-- toggle button -->
+  <ion-grid class="toggler-button">
+    <ion-row>
+      <ion-col>
+        <ion-button color="light" (click)=viewToggler()><ion-icon [name]=iconToggler></ion-icon><span [innerHTML]=togglerText></span></ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
